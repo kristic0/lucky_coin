@@ -23,10 +23,12 @@ namespace LuckyCoin.src
             List<Transaction> transactions = new List<Transaction>();
             Random rand = new Random();
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 9; i++)
             {
                 transactions.Add(new Transaction(i));
                 // transactions.Add(new Transaction(rand.Next()));
+
+                // Console.WriteLine(transactions[i]);
             }
 
             return transactions;

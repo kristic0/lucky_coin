@@ -1,6 +1,5 @@
 ﻿using LuckyCoin.src;
 using LuckyCoin.src.MerkleTree;
-using System;
 using System.Collections.Generic;
 
 namespace LuckyCoin
@@ -14,7 +13,8 @@ namespace LuckyCoin
             List<Transaction> tList = new List<Transaction>();
             tList = Helper.PopulateFakeTx();
             MerkleTree mt = new MerkleTree(tList);
-            mt.CalculateMerkleRoot();
+
+            System.Console.WriteLine(Helper.HashToString(mt.CalculateMerkleRoot()));
         }
     }
 }
