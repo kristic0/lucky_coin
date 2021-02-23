@@ -1,5 +1,5 @@
 ﻿using LuckyCoin.src;
-using LuckyCoin.src.MerkleTree;
+using LuckyCoin.src.Merkle;
 using System.Collections.Generic;
 
 namespace LuckyCoin
@@ -8,13 +8,7 @@ namespace LuckyCoin
     {
         static void Main(string[] args)
         {
-            // BlockChain blockChain = new BlockChain();
-
-            List<Transaction> tList = new List<Transaction>();
-            tList = Helper.PopulateFakeTx();
-            MerkleTree mt = new MerkleTree(tList);
-
-            System.Console.WriteLine(Helper.HashToString(mt.CalculateMerkleRoot()));
+            BlockChain blockChain = new BlockChain();
         }
     }
 }

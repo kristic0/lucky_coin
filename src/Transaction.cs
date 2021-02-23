@@ -5,8 +5,11 @@ namespace LuckyCoin.src
 {
     public class Transaction
     {
-        private int _data;
-        private byte[] _hash;
+        private readonly int _data;
+        private readonly byte[] _hash;
+        private byte[] _sendersAddress;
+        private byte[] _receiversAddress;
+        private decimal _amount;
 
         public byte[] Hash { get { return _hash; } }
 
@@ -14,8 +17,6 @@ namespace LuckyCoin.src
         {
             _data = data;
             _hash = CalculateHash();
-
-            // Console.WriteLine("tx_h: " + Helper.HashToString(_hash));
         }
 
         private byte[] CalculateHash()

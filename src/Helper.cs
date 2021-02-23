@@ -10,6 +10,8 @@ namespace LuckyCoin.src
         // and format each one as a *hexadecimal* string.
         public static string HashToString(byte[] byteArray)
         {
+            if(byteArray == null) { return "null"; }
+
             StringBuilder Sb = new StringBuilder();
             Sb.Append("0x");
             foreach (Byte b in byteArray)
@@ -23,12 +25,12 @@ namespace LuckyCoin.src
             List<Transaction> transactions = new List<Transaction>();
             Random rand = new Random();
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 110; i++)
             {
-                transactions.Add(new Transaction(i));
-                // transactions.Add(new Transaction(rand.Next()));
+                // transactions.Add(new Transaction(i));
+                transactions.Add(new Transaction(rand.Next()));
 
-                // Console.WriteLine(transactions[i]);
+                //Console.WriteLine(transactions[i]);
             }
 
             return transactions;

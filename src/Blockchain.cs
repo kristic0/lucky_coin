@@ -1,32 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LuckyCoin.src
 {
     class BlockChain
     {
+        private List<Block> _chain;
         public BlockChain()
         {
             Console.WriteLine("BlockChain created!\n");
 
-            List<Block> chain = new List<Block>();
+            _chain = new List<Block>();
 
-            chain.Add(CreateGenesisBlock());
+            CreateGenesisBlock();
+            AddBlock();
+            AddBlock();
+            AddBlock();
 
-            //foreach(var block in chain)
-            //{
-            //    Console.WriteLine(block.ReadFromBlock());
-            //}
-
+            foreach (var block in _chain)
+            {
+                Console.WriteLine(Helper.HashToString(block.BlockHeader.HashPrevBlock));
+            }
         }
 
-        private Block CreateGenesisBlock()
+        private void CreateGenesisBlock()
         {
-            Console.WriteLine("Created Genesis!");
-            return new Block("genesis");
+            _chain.Add(new Block(null));
         }
 
-
+        private void AddBlock()
+        {
+            _chain.Add(new Block(_chain[^1].BlockHeader.HashMerkleRoot));
+        }
     }
 }
