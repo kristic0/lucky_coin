@@ -50,8 +50,7 @@ namespace LuckyCoin.src.Merkle
             List<byte[]> toSerialize = new List<byte[]>();
             for (int i = 0; i < tempHashes.Count; i += 2)
             {
-                // If i + 1 doesn't exceed the count just proceed
-                if (!(i + 1 >= tempHashes.Count))
+                if (i + 1 < tempHashes.Count)
                 {
                     toSerialize.Add(tempHashes[i]);
                     toSerialize.Add(tempHashes[i + 1]);

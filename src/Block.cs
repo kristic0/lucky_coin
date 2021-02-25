@@ -13,16 +13,17 @@ namespace LuckyCoin.src
         public List<Transaction> Transactions { get => _transactions; set => _transactions = value; }
         public BlockHeader BlockHeader { get => _blockHeader; set => _blockHeader = value; }
 
-        public Block(byte[] hashPrevBlock)
+        public Block()
         {
             _txBlockLimit = 100;
             _transactions = new List<Transaction>();
             _transactions = Helper.PopulateFakeTx(); // todo remove after proper impl
 
             _blockHeader = new BlockHeader(_transactions);
+        }
+        public void SetPrevHash(byte[] hashPrevBlock)
+        {
             _blockHeader.HashPrevBlock = hashPrevBlock;
-
-            _txCounter = _transactions.Count;
         }
     }
 }

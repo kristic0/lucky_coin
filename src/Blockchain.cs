@@ -12,25 +12,41 @@ namespace LuckyCoin.src
 
             _chain = new List<Block>();
 
-            CreateGenesisBlock();
+            AddBlock(); // add msg to block class for genesis
             AddBlock();
             AddBlock();
             AddBlock();
 
-            foreach (var block in _chain)
+            //foreach (var block in _chain)
+            //{
+            //    Console.WriteLine(Helper.HashToString(block.BlockHeader.HashPrevBlock));
+            //}
+
+            Miner miner = new Miner();
+
+            for(int i = 0; i< _chain.Count; i++ )
             {
-                Console.WriteLine(Helper.HashToString(block.BlockHeader.HashPrevBlock));
-            }
-        }
+                Console.WriteLine("Mining block no: " + i);
+                if (i == 0)
+                {
+                    _chain[i].BlockHeader.HashPrevBlock = null;
+                }
+                else
+                {
+                    _chain[i].SetPrevHash(_chain[i - 1].BlockHeader.HashOfBlock);
+                }
 
-        private void CreateGenesisBlock()
-        {
-            _chain.Add(new Block(null));
+                _chain[i].BlockHeader.HashOfBlock = miner.MineBlock(_chain[i]);
+
+                Console.WriteLine("Prev hash: " + Helper.HashToString(_chain[i].BlockHeader.HashPrevBlock));
+                Console.WriteLine("Block no " + i + " hash is: " + Helper.HashToString(_chain[i].BlockHeader.HashOfBlock));
+                Console.WriteLine('\n');
+            }
         }
 
         private void AddBlock()
         {
-            _chain.Add(new Block(_chain[^1].BlockHeader.HashMerkleRoot));
+            _chain.Add(new Block());
         }
     }
 }
