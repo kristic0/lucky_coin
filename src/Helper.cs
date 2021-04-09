@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace LuckyCoin.src
     {
         // Loop through each byte of the hashed data
         // and format each one as a *hexadecimal* string.
-        public static string HashToString(byte[] byteArray)
+        public static string ByteArrToString(byte[] byteArray)
         {
             if(byteArray == null) { return "null"; }
 
@@ -26,7 +27,7 @@ namespace LuckyCoin.src
             List<Transaction> transactions = new List<Transaction>();
             Random rand = new Random();
 
-            for (int i = 0; i < 110; i++)
+            for (int i = 0; i < 100; i++)
             {
                 // transactions.Add(new Transaction(i));
                 transactions.Add(new Transaction(rand.Next()));
@@ -37,12 +38,26 @@ namespace LuckyCoin.src
             return transactions;
         }
 
-        public static byte[] StringToByteArray(string hex)
+        public static Transaction GenerateFakeTx()
         {
-            return Enumerable.Range(0, hex.Length)
-                             .Where(x => x % 2 == 0)
-                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                             .ToArray();
+            Transaction tx;
+            Random rand = new Random();
+
+            tx = new Transaction(rand.Next());
+
+            return tx;
+        }
+
+        public static byte[] FromHexToByteArray(string hex)
+        {
+            hex = hex.Replace("-", "");
+            byte[] raw = new byte[hex.Length / 2];
+            for (int i = 0; i < raw.Length; i++)
+            {
+                raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+            }
+
+            return raw;
         }
     }
 }

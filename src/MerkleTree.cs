@@ -81,9 +81,9 @@ namespace LuckyCoin.src.Merkle
 
             for (int i = 0; i < args.Count; i += 2)
             {
-                serializedHashes.Append(Helper.HashToString(args[i]));                
+                serializedHashes.Append(Helper.ByteArrToString(args[i]));                
                 serializedHashes.Append(", ");
-                serializedHashes.Append(Helper.HashToString(args[i + 1]));
+                serializedHashes.Append(Helper.ByteArrToString(args[i + 1]));
                 serializedHashes.Append("]");
             }
 

@@ -13,6 +13,15 @@ namespace LuckyCoin.src
 
         public byte[] Hash { get { return _hash; } }
 
+        public Transaction(int data, byte[] sendersAddress, byte[] receiversAddress, decimal amount)
+        {
+            _data = data;
+            _sendersAddress = sendersAddress;
+            _receiversAddress = receiversAddress;
+            _amount = amount;
+            _hash = CalculateHash();
+        }
+
         public Transaction(int data)
         {
             _data = data;

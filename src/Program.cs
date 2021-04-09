@@ -8,7 +8,9 @@ namespace LuckyCoin
     {
         static void Main(string[] args)
         {
-            BlockChain blockChain = new BlockChain();
+            TransactionPool txPool = TransactionPool.Instance;
+            BlockChain blockChain = new BlockChain(txPool);
+            Miner miner = new Miner(blockChain.Chain, txPool);
         }
     }
 }
