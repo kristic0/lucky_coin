@@ -7,7 +7,7 @@ namespace LuckyCoin.src.Merkle
 {
     class MerkleTree
     {
-        private List<Transaction> _txList;
+        private readonly List<Transaction> _txList;
 
         public MerkleTree(List<Transaction> txList)
         {
@@ -19,8 +19,8 @@ namespace LuckyCoin.src.Merkle
             // After all the cycles hashes[0] becomes the root, 
             // until then it's just storing the current cycle
 
-            List<byte[]> hashes = new List<byte[]>();
-            List<byte[]> tempHashes = new List<byte[]>();
+            var hashes = new List<byte[]>();
+            var tempHashes = new List<byte[]>();
 
             foreach(var tx in _txList)
             {
@@ -45,9 +45,9 @@ namespace LuckyCoin.src.Merkle
             return hashes[0];
         }
 
-        public void Compute(List<byte[]> tempHashes, List<byte[]> hashes)
+        private void Compute(List<byte[]> tempHashes, List<byte[]> hashes)
         {
-            List<byte[]> toSerialize = new List<byte[]>();
+            var toSerialize = new List<byte[]>();
             for (int i = 0; i < tempHashes.Count; i += 2)
             {
                 if (i + 1 < tempHashes.Count)
@@ -74,16 +74,16 @@ namespace LuckyCoin.src.Merkle
             //}
         }
 
-        public string SerializeHashes(List<byte[]> args)
+        private string SerializeHashes(List<byte[]> hash)
         {
-            StringBuilder serializedHashes = new StringBuilder();
+            var serializedHashes = new StringBuilder();
             serializedHashes.Append("[");
 
-            for (int i = 0; i < args.Count; i += 2)
+            for (int i = 0; i < hash.Count; i += 2)
             {
-                serializedHashes.Append(Helper.ByteArrToString(args[i]));                
+                serializedHashes.Append(Helper.ByteArrToString(hash[i]));                
                 serializedHashes.Append(", ");
-                serializedHashes.Append(Helper.ByteArrToString(args[i + 1]));
+                serializedHashes.Append(Helper.ByteArrToString(hash[i + 1]));
                 serializedHashes.Append("]");
             }
 

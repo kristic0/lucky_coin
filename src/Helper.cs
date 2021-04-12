@@ -8,18 +8,38 @@ namespace LuckyCoin.src
 {
     public static class Helper
     {
-        // Loop through each byte of the hashed data
-        // and format each one as a *hexadecimal* string.
+        private static readonly uint[] _lookup32 = CreateLookup32();
+
+        private static uint[] CreateLookup32()
+        {
+            var result = new uint[256];
+            for (int i = 0; i < 256; i++)
+            {
+                string s=i.ToString("x2");
+                result[i] = ((uint)s[0]) + ((uint)s[1] << 16);
+            }
+            return result;
+        }
         public static string ByteArrToString(byte[] byteArray)
         {
-            if(byteArray == null) { return "null"; }
-
-            StringBuilder Sb = new StringBuilder();
-            Sb.Append("0x");
-            foreach (Byte b in byteArray)
-                Sb.Append(b.ToString("x2"));
-
-            return Sb.ToString();
+            // if(byteArray == null) { return "null"; }
+            //
+            // StringBuilder Sb = new StringBuilder();
+            // Sb.Append("0x");
+            // foreach (Byte b in byteArray)
+            //     Sb.Append(b.ToString("x2"));
+            //
+            // return Sb.ToString();
+            var lookup32 = _lookup32;
+            var result = new char[byteArray.Length * 2];
+            for (int i = 0; i < byteArray.Length; i++)
+            {
+                var val = lookup32[byteArray[i]];
+                result[2*i] = (char)val;
+                result[2*i + 1] = (char) (val >> 16);
+            }
+            
+            return new string(result);
         }
 
         public static List<Transaction> PopulateFakeTx()
@@ -40,12 +60,7 @@ namespace LuckyCoin.src
 
         public static Transaction GenerateFakeTx()
         {
-            Transaction tx;
-            Random rand = new Random();
-
-            tx = new Transaction(rand.Next());
-
-            return tx;
+            return new Transaction(new Random().Next());
         }
 
         public static byte[] FromHexToByteArray(string hex)

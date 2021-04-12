@@ -1,6 +1,9 @@
-﻿using LuckyCoin.src;
+﻿using System;
+using LuckyCoin.src;
 using LuckyCoin.src.Merkle;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace LuckyCoin
 {
@@ -8,9 +11,9 @@ namespace LuckyCoin
     {
         static void Main(string[] args)
         {
-            TransactionPool txPool = TransactionPool.Instance;
-            BlockChain blockChain = new BlockChain(txPool);
-            Miner miner = new Miner(blockChain.Chain, txPool);
+            var txPool = TransactionPool.Instance;
+            var blockChain = new BlockChain(txPool);
+            var miner = new Miner(blockChain.Chain, txPool);
         }
     }
 }
