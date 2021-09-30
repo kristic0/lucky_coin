@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d65c7ac6-da44-4613-a972-fd7d775f4142" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TxIn.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TxOut.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Wallet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/contentModel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LuckyCoin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LuckyCoin.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/LuckyCoin.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Block.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Blockchain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Blockchain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Miner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Miner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TransactionPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/TransactionPool.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +29,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F0D3ACED-2858-4B9C-BD84-9206C4B3F4E5/80/33876fab/StreamReader.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/src/Transaction.cs" />
-      <option value="$PROJECT_DIR$/src/Program.cs" />
       <option value="$PROJECT_DIR$/src/MerkleTree.cs" />
       <option value="$PROJECT_DIR$/src/Helper.cs" />
+      <option value="$PROJECT_DIR$/src/TransactionPool.cs" />
+      <option value="$PROJECT_DIR$/src/Blockchain.cs" />
+      <option value="$PROJECT_DIR$/src/TxIn.cs" />
+      <option value="$PROJECT_DIR$/src/TxOut.cs" />
+      <option value="$PROJECT_DIR$/src/Transaction.cs" />
+      <option value="$PROJECT_DIR$/src/Block.cs" />
       <option value="$PROJECT_DIR$/src/Miner.cs" />
+      <option value="$PROJECT_DIR$/src/Program.cs" />
+      <option value="$PROJECT_DIR$/src/Wallet.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1qzM0Nfemw7DoIqeHcQFN0c3pHD" />
@@ -39,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -72,12 +93,26 @@
       <updated>1618077745008</updated>
       <workItem from="1618077749464" duration="2849000" />
       <workItem from="1618232226362" duration="4376000" />
+      <workItem from="1619560208047" duration="111000" />
+      <workItem from="1619560335622" duration="204000" />
+      <workItem from="1619602434569" duration="126000" />
+      <workItem from="1619602578783" duration="47000" />
+      <workItem from="1620024989766" duration="7414000" />
+      <workItem from="1620041997121" duration="3308000" />
+      <workItem from="1621079412405" duration="29000" />
+      <workItem from="1621079463754" duration="590000" />
+      <workItem from="1621623894939" duration="838000" />
+      <workItem from="1624639195691" duration="602000" />
+      <workItem from="1625560656293" duration="3366000" />
+      <workItem from="1628461817040" duration="1797000" />
+      <workItem from="1631373305518" duration="30000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
