@@ -19,11 +19,6 @@ namespace LuckyCoin.src
             _transactions = new List<Transaction>();
         }
 
-        public void SetPrevHash(byte[] hashPrevBlock)
-        {
-            _blockHeader.HashPrevBlock = hashPrevBlock;
-        }
-
         public void SetBlockHash(byte[] hash)
         {
             _blockHeader.HashOfBlock = hash;

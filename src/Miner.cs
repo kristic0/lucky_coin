@@ -11,7 +11,7 @@ namespace LuckyCoin.src
      could maybe avoid byte conversion to string and vice versa in MineBlock
      */
 
-    public static class MyExtensions
+    public static class ListBlockExtension
     {
         public static void SetPrevHashFor(this List<Block> list, Block item)
         {

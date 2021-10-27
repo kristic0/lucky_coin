@@ -7,13 +7,33 @@ using System.Text;
 
 namespace LuckyCoin
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            var txPool = TransactionPool.Instance;
-            var blockChain = new BlockChain(txPool);
-            var miner = new Miner(blockChain.Chain, txPool);
+            Console.WriteLine("Options: \n1)Start miner\n2)Create wallet");
+            var input = Console.ReadLine();
+            switch (Int32.Parse(input))
+            {
+                case 1:
+                    StartMiner();
+                    break;
+                case 2:
+                    CreateWallet();
+                    break;
+            }
         }
+
+        private static void StartMiner()
+        {
+            var blockChain = new BlockChain();
+            var miner = new Miner(blockChain.Chain, TransactionPool.Instance);
+        }
+
+        private static void CreateWallet()
+        {
+            var wlt = new Wallet("idk rand phrase");
+        }
+        
     }
 }

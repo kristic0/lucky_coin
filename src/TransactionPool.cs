@@ -9,7 +9,7 @@ namespace LuckyCoin.src
         private static TransactionPool _instance = null;
         private static readonly object _lock = new object();
 
-        public readonly int _maxTxs = 400;
+        private const int MaxTxs = 400;
         Queue<Transaction> _txs = new Queue<Transaction>();
 
         public Queue<Transaction> Transactions { get { return _txs ;} }
@@ -21,7 +21,7 @@ namespace LuckyCoin.src
             Console.WriteLine("Tx pool started!\n"); 
             Console.ResetColor();
 
-            for (int i = 0; i < _maxTxs; i++)
+            for (int i = 0; i < MaxTxs; i++)
             {
                 AddTxToPool(Helper.GenerateFakeTx());
             }

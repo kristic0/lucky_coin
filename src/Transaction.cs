@@ -1,25 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 namespace LuckyCoin.src
 {
     public class Transaction
     {
-        private byte[] _sendersAddress;
-        private byte[] _receiversAddress;
-        private decimal _amount;
+        public string Id;
+        public List<TxIn> Inputs = new List<TxIn>();
+        public List<TxOut> Outputs = new List<TxOut>();
 
         public byte[] Hash { get; }
         private int Data { get; set; }
 
-        public Transaction(int data, byte[] sendersAddress, byte[] receiversAddress, decimal amount)
-        {
-            Data = data;
-            _sendersAddress = sendersAddress;
-            _receiversAddress = receiversAddress;
-            _amount = amount;
-            Hash = CalculateHash();
-        }
+        // public Transaction()
+        // {
+        //     
+        //     Hash = CalculateHash();
+        // }
 
         public Transaction(int data)
         {
