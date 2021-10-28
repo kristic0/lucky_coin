@@ -64,9 +64,12 @@ namespace LuckyCoin
             Console.WriteLine(array);
         }
 
-        public void VerifyWallet()
+        public void CalculateBalance()
         {
-            // go through utxo and check if balance is correct ?
+            // go through all txs for this specific addr
+            // and return current balance based on UTXO
         }
+        
+        
     }
 }
