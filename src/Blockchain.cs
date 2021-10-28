@@ -17,4 +17,5 @@ namespace LuckyCoin.src
             Chain = new List<Block>();
         }
     }
+    
 }

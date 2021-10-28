@@ -18,6 +18,11 @@ namespace LuckyCoin.src.Merkle
         {
             // After all the cycles hashes[0] becomes the root, 
             // until then it's just storing the current cycle
+            
+            if(_txList.Count == 1)
+            {
+                return _txList[0].Hash;
+            }
 
             var hashes = new List<byte[]>();
             var tempHashes = new List<byte[]>();

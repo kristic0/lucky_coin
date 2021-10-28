@@ -21,6 +21,8 @@ namespace LuckyCoin.src
             Console.WriteLine("Tx pool started!\n"); 
             Console.ResetColor();
 
+            
+            // todo: while txs casted to the network and under 400
             for (int i = 0; i < MaxTxs; i++)
             {
                 AddTxToPool(Helper.GenerateFakeTx());

@@ -23,42 +23,48 @@ namespace LuckyCoin.src
         }
     }
 
-    public class Miner 
+    public class Miner
     {
         public Miner(List<Block> chain, TransactionPool txPool)
         {
-            while(true)
+            if (chain.Count == 0)
             {
-               // Console.WriteLine("Mining block no: " + chain.Count);
-
-                if (txPool.Transactions.Count > 0)
+                GenerateGenesisBlock(chain);
+                
+                while(true)
                 {
-                    var block = new Block();
-
-                    for (int i = 0; i < block.TxBlockLimit; i++)
-                    {
-                        var tx = txPool.Transactions.Dequeue();
-                        block.AddTransactionToBlock(tx);
-                    }
+                    Console.WriteLine("Mining block no: " + chain.Count);
                     
-                    Console.WriteLine("\nMining block: " + chain.Count);
-                    block.CreateHeader();
-                    MineBlock(block);
+                    if (txPool.Transactions.Count > 0)
+                    {
+                        var block = new Block();
+                    
+                        // create coinbase tx here (pass miner wallet addr)
+                        // fix for queue < TxBlockLimit
+                        for (int i = 0; i < block.TxBlockLimit; i++)
+                        {
+                            var tx = txPool.Transactions.Dequeue();
+                            block.AddTransactionToBlock(tx);
+                        }
 
-                    chain.Add(block);
-                    chain.SetPrevHashFor(block);
-
-                    Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashPrevBlock));
-                    Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashOfBlock));
-                } else
-                {
-                    Thread.Sleep(5000);
+                        MineBlock(block);
+                        chain.Add(block);
+                        chain.SetPrevHashFor(block);
+                    
+                        Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashPrevBlock));
+                        Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashOfBlock));
+                    } else
+                    {
+                        Console.WriteLine("Sleep");
+                        Thread.Sleep(5000);
+                    }
                 }
             }
         }
 
         private void MineBlock(Block blockToMine)
         {
+            blockToMine.CreateHeader();
             string blockHash;
             byte[] hash;
 
@@ -95,6 +101,19 @@ namespace LuckyCoin.src
                 .ToArray());
 
             return hash;
+        }
+        
+        private void GenerateGenesisBlock(List<Block> chain)
+        {
+            var block = new Block();
+            block.GenerateCoinbaseTx();
+            block.CreateHeader();
+            MineBlock(block);
+            
+            Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashPrevBlock));
+            Console.WriteLine(Helper.ByteArrToString(block.BlockHeader.HashOfBlock));
+            chain.Add(block);
+            
         }
     }
 }

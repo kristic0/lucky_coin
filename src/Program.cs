@@ -26,6 +26,7 @@ namespace LuckyCoin
 
         private static void StartMiner()
         {
+            // todo: check network for existing blockchain
             var blockChain = new BlockChain();
             var miner = new Miner(blockChain.Chain, TransactionPool.Instance);
         }

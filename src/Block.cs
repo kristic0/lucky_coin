@@ -4,34 +4,52 @@ namespace LuckyCoin.src
 {
     public class Block
     {
-        private BlockHeader _blockHeader;
-        private int _blocksize;
-        private int _txCounter;
-        private List<Transaction> _transactions;
+        //private int _blocksize;
 
-        public List<Transaction> Transactions { get => _transactions; set => _transactions = value; }
-        public BlockHeader BlockHeader { get => _blockHeader; set => _blockHeader = value; }
+        public List<Transaction> Transactions { get ; set ; }
+        public BlockHeader BlockHeader { get ; set; }
         public int TxBlockLimit { get; set; }
+        private int TxCounter { get; set; }
+        
 
         public Block()
         {
             TxBlockLimit = 100;
-            _transactions = new List<Transaction>();
+            TxCounter = 0;
+            Transactions = new List<Transaction>();
         }
 
         public void SetBlockHash(byte[] hash)
         {
-            _blockHeader.HashOfBlock = hash;
+            BlockHeader.HashOfBlock = hash;
         }
 
         public void AddTransactionToBlock(Transaction tx)
         {
-            _transactions.Add(tx);
+            Transactions.Add(tx);
+            TxCounter += 1;
         }
 
-        public void CreateHeader()
+        public void CreateHeader() // could be called in constructor -maybe
         {
-            _blockHeader = new BlockHeader(_transactions);
+            BlockHeader = new BlockHeader(Transactions);
+        }
+
+        public void GenerateCoinbaseTx()
+        {
+            var tx = new Transaction
+            {
+                Inputs = null,
+                Outputs = new List<TxOut>
+                {
+                    new TxOut
+                    {
+                        Amount = 50,
+                        RecipientAddr = ""
+                    }
+                }
+            };
+            Transactions.Add(tx);
         }
     }
 }
